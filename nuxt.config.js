@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'denisinha-store',
+    title: 'Loja da denisinha',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -15,6 +15,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '@/assets/css/main.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -29,7 +30,9 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/stylelint
-    '@nuxtjs/stylelint-module'
+    '@nuxtjs/stylelint-module',
+    // https://github.com/ivodolenc/nuxt-gsap-module
+    'nuxt-gsap-module'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -52,5 +55,9 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+  // GSAP https://greensock.com/gsap/
+  gsap: {
+    /* Module Options */
   }
 }
