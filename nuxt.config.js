@@ -32,7 +32,9 @@ export default {
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
     // https://github.com/ivodolenc/nuxt-gsap-module
-    'nuxt-gsap-module'
+    'nuxt-gsap-module',
+    // https://github.com/nuxt-community/fontawesome-module
+    '@nuxtjs/fontawesome'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -59,5 +61,11 @@ export default {
   // GSAP https://greensock.com/gsap/
   gsap: {
     /* Module Options */
+  },
+  fontawesome: {
+    icons: {
+      solid: true,
+      brands: true
+    }
   }
 }

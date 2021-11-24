@@ -4,7 +4,7 @@
     <div class="logo">
       <img src="~/assets/img/logo.png" alt="">
     </div>
-    <nav>
+    <nav class="sites-links">
       <div class="links">
         home
       </div>
@@ -18,7 +18,7 @@
         contato
       </div>
     </nav>
-    <nav>
+    <nav class="user-links">
       <span class="user" />
       <div class="links">
         Entrar
@@ -54,7 +54,7 @@ export default {
     iconsAnimation () {
       const gsap = this.$gsap.timeline()
       gsap.from('.links', { rotation: 860, y: -300, duration: 1, stagger: 1 })
-        .fromTo('.links', { fontSize: '1.6rem', filter: 'brightness(1.5)', duration: 1, stagger: 1 }, { fontSize: '2.5rem', filter: 'brightness(1)', stagger: 1 }, '-=5')
+        .fromTo('.links', { fontSize: '0.6rem', filter: 'brightness(1.5)', duration: 1, stagger: 1 }, { fontSize: '1.7rem', filter: 'brightness(1)', stagger: 1 }, '-=5')
     },
     borderAnimation () {
       const gsap = this.$gsap.timeline()
@@ -70,7 +70,7 @@ export default {
   grid-area: header;
   background-color: var(--header);
   display: grid;
-  grid: 1fr / 1fr 2fr 1fr;
+  grid: 1fr / 1fr 1fr;
   place-items: center;
   position: relative;
 }
@@ -83,16 +83,28 @@ export default {
   bottom: 0;
 }
 
-nav {
+.sites-links {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.user-links {
   display: grid;
   grid-template-rows: 1fr;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  padding: 1rem;
+}
+
+.user {
+  grid-column: span 2;
 }
 
 .links {
-  font-size: 2.5rem;
+  font-size: 1rem;
   font-weight: 200;
   color: blue;
   padding: 5px;
@@ -100,9 +112,35 @@ nav {
   text-align: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
+  width: 100%;
+  margin: auto;
+}
+
+.logo {
+  grid-column: span 2;
 }
 
 .logo img {
   width: 10rem;
 }
+
+@media screen and (min-width: 768px) {
+  .header {
+    grid: 1fr / 1fr 2fr 1fr;
+  }
+
+  .logo {
+    grid-column: span 1;
+  }
+
+  .sites-links,
+  .user-links {
+    grid-template-rows: 1fr;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+}
+
 </style>

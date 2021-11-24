@@ -20,7 +20,7 @@
       }"
       class="main"
     >
-      main
+      <Welcome />
     </main>
     <Footer />
   </div>
@@ -59,11 +59,12 @@ export default {
   max-width: 100%;
   min-height: 100vh;
   display: grid;
-  grid: 0.35fr 2fr 0.15fr / 0.15fr 1fr;
+  grid: 0.5fr 0.15fr 1fr 0.1fr / 1fr;
   grid-template-areas:
-    "header header"
-    "aside main"
-    "footer footer";
+    "header"
+    "aside"
+    "main"
+    "footer";
 }
 
 .aside {
@@ -74,6 +75,16 @@ export default {
 .main {
   grid-area: main;
   background-color: var(--secondary);
+}
+
+@media screen and (min-width: 768px) {
+  .layout {
+    grid: 0.35fr 2fr 0.15fr / 0.15fr 1fr;
+    grid-template-areas:
+      "header header"
+      "aside main"
+      "footer footer";
+  }
 }
 
 </style>
