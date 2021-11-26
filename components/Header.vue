@@ -53,7 +53,6 @@
 
 <script>
 export default {
-  name: 'Header',
   mounted () {
     this.logoAnimation()
     this.iconsAnimation()
@@ -62,7 +61,7 @@ export default {
   methods: {
     logoAnimation () {
       // const gsap = this.$gsap
-      const tl = this.$gsap.timeline({ ease: 'linear', duration: 2, repeat: -1 })
+      const tl = this.$gsap.timeline({ ease: 'linear', duration: 2, repeat: -1, clearProps: 'all' })
       // gsap.from('.logo', { rotation: 180, x: -500, duration: 1.5, ease: 'bounce' })
       tl
         .to('.logo img', { x: 5, scale: 1 })
@@ -73,12 +72,11 @@ export default {
         )
     },
     iconsAnimation () {
-      const gsap = this.$gsap.timeline()
-      gsap.from('.links', { rotation: 860, y: -300, duration: 1, stagger: 0.35 })
-        .fromTo('.links', { fontSize: '0.6rem', filter: 'brightness(1.5)', duration: 1, stagger: 0.15 }, { fontSize: '1.6rem', filter: 'brightness(1)', stagger: 1 }, '-=5')
+      const gsap = this.$gsap
+      gsap.from('.links', { x: -15, duration: 1, rotation: 0.15, filter: 'hue-rotate(25deg)', stagger: 0.1, clearProps: 'all' })
     },
     borderAnimation () {
-      const gsap = this.$gsap.timeline()
+      const gsap = this.$gsap.timeline({ clearProps: 'all' })
       gsap.fromTo('.line', { opacity: 0, width: '0%', duration: 2 }, { opacity: 1, width: '100%', duration: 4, delay: 5 })
     }
   }

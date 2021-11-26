@@ -14,5 +14,8 @@ export const mutations = {
   },
   toggle (state, todo) {
     todo.done = !todo.done
+  },
+  setList (state, payload) {
+    state.list = payload
   }
 }

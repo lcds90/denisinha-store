@@ -1,25 +1,29 @@
 
 <template>
-  <div class="layout">
+  <div class="layout-store">
     <Header />
     <aside
-      v-gsap.from="{
-        x: -150,
-        duration: 1.5
-      }"
       class="aside"
     >
-      <section>categoria 1</section>
-      <section>categoria 2</section>
-      <section>categoria 3</section>
+      <!--  <p v-if="$fetchState.pending">
+        Fetching mountains...
+      </p>
+      <p v-else-if="$fetchState.error">
+        An error occurred :(
+      </p>
+      <div v-else>
+        <h1>Nuxt Mountains</h1>
+        <ul>
+          <li v-for="mountain of mountains" :key="mountain.title">
+            {{ mountain.title }}
+          </li>
+        </ul>
+        <button @click="$fetch">
+          Refresh
+        </button>
+      </div> -->
     </aside>
     <main
-      v-gsap.from="{
-        scale: 0.95,
-        opacity: 0,
-        duration: 1,
-        ease: 'bounce'
-      }"
       class="main"
     >
       <ul>
@@ -30,7 +34,6 @@
         <li><input placeholder="What needs to be done?" @keyup.enter="addTodo"></li>
       </ul>
     </main>
-    <Footer />
   </div>
 </template>
 
@@ -43,6 +46,12 @@ export default {
       show: true,
       title: 'Loja da denisinha!'
     }
+  },
+  async fetch () {
+    const data = await fetch(
+      'https://api.nuxtjs.dev/mountains'
+    ).then(res => res.json())
+    this.$store.commit('todos/setList', data)
   },
   head () {
     return {
@@ -73,45 +82,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-.layout {
-  width: 100vw;
-  max-width: 100%;
-  min-height: 100vh;
-  display: grid;
-  grid: 0.5fr 0.15fr 1fr 0.1fr / 1fr;
-  grid-template-areas:
-    "header"
-    "aside"
-    "main"
-    "footer";
-}
-
-.aside {
-  grid-area: aside;
-  background-color: var(--black);
-}
-
-.aside > section {
-  background-color: var(--primary);
-  margin: 5px;
-}
-
-.main {
-  grid-area: main;
-  background-color: var(--background);
-}
-
-@media screen and (min-width: 768px) {
-  .layout {
-    grid: 0.35fr 2fr 0.15fr / 0.15fr 1fr;
-    grid-template-areas:
-      "header header"
-      "aside main"
-      "aside footer";
-  }
-}
-
-</style>
