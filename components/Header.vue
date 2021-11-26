@@ -6,36 +6,46 @@
     </div>
     <nav class="sites-links">
       <div class="links home">
-        <font-awesome-icon
-          :icon="['fas', 'home']"
-        />
-        home
+        <NuxtLink to="/">
+          <font-awesome-icon
+            :icon="['fas', 'home']"
+          />
+          Home
+        </NuxtLink>
       </div>
       <div class="links portfolio">
-        <font-awesome-icon
-          :icon="['fas', 'grin-stars']"
-        />
-        portfolio
+        <NuxtLink to="/">
+          <font-awesome-icon
+            :icon="['fas', 'grin-stars']"
+          />
+          portfolio
+        </NuxtLink>
       </div>
       <div class="links store">
-        <font-awesome-icon
-          :icon="['fas', 'shopping-bag']"
-        />
-        loja
+        <NuxtLink to="/store">
+          <font-awesome-icon
+            :icon="['fas', 'shopping-bag']"
+          />
+          Loja
+        </NuxtLink>
       </div>
     </nav>
     <nav class="user-links">
       <div class="links account">
-        <font-awesome-icon
-          :icon="['fas', 'user']"
-        />
-        Entrar
+        <NuxtLink to="/">
+          <font-awesome-icon
+            :icon="['fas', 'user']"
+          />
+          Entrar
+        </NuxtLink>
       </div> <!-- Quando logado, minha conta -->
       <div class="links cart">
-        <font-awesome-icon
-          :icon="['fas', 'shopping-cart']"
-        />
-        Carrinho
+        <NuxtLink to="/">
+          <font-awesome-icon
+            :icon="['fas', 'shopping-cart']"
+          />
+          Carrinho
+        </NuxtLink>
       </div>
     </nav>
   </header>
@@ -118,7 +128,6 @@ export default {
 
 .links {
   font-weight: 800;
-  color: white;
   padding: 5px;
   text-align: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
@@ -134,8 +143,16 @@ export default {
 
 .links:hover {
   background-color: var(--background);
-  color: var(--secondary);
   cursor: pointer;
+}
+
+.links a {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: white;
+  text-decoration: none;
 }
 
 .home {
@@ -185,6 +202,38 @@ export default {
     padding: 1.5rem;
     width: 100%;
     height: 75%;
+  }
+}
+
+/* iPhone specific */
+@media screen and (min-width: 320px) and (max-height: 568px) {
+  .logo img {
+    width: 7rem;
+  }
+}
+
+/* Galaxy Fold */
+@media screen and (max-width: 320px) and (min-height: 653px) {
+  .header {
+    grid: 1fr / 1fr;
+  }
+
+  .logo {
+    grid-column: span 1;
+  }
+
+  .user-links {
+    border: none;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .sites-links {
+    padding: 0.25rem;
+  }
+
+  .logo img {
+    width: 8rem;
   }
 }
 
