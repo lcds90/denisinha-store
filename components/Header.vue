@@ -5,25 +5,21 @@
       <img src="~/assets/img/logo.png" alt="">
     </div>
     <nav class="sites-links">
-      <div class="links">
+      <div class="links home">
         home
       </div>
-      <div class="links">
+      <div class="links portfolio">
         portfolio
       </div>
-      <div class="links">
-        itens
-      </div>
-      <div class="links">
-        contato
+      <div class="links store">
+        loja
       </div>
     </nav>
     <nav class="user-links">
-      <span class="user" />
-      <div class="links">
+      <div class="links account">
         Entrar
       </div> <!-- Quando logado, minha conta -->
-      <div class="links">
+      <div class="links cart">
         Carrinho
       </div>
     </nav>
@@ -53,8 +49,8 @@ export default {
     },
     iconsAnimation () {
       const gsap = this.$gsap.timeline()
-      gsap.from('.links', { rotation: 860, y: -300, duration: 1, stagger: 1 })
-        .fromTo('.links', { fontSize: '0.6rem', filter: 'brightness(1.5)', duration: 1, stagger: 1 }, { fontSize: '1.7rem', filter: 'brightness(1)', stagger: 1 }, '-=5')
+      gsap.from('.links', { rotation: 860, y: -300, duration: 1, stagger: 0.35 })
+        .fromTo('.links', { fontSize: '0.6rem', filter: 'brightness(1.5)', duration: 1, stagger: 0.15 }, { fontSize: '1.6rem', filter: 'brightness(1)', stagger: 1 }, '-=5')
     },
     borderAnimation () {
       const gsap = this.$gsap.timeline()
@@ -68,7 +64,7 @@ export default {
 .header {
   max-width: 100%;
   grid-area: header;
-  background-color: var(--header);
+  background-color: var(--primary);
   display: grid;
   grid: 1fr / 1fr 1fr;
   place-items: center;
@@ -93,8 +89,8 @@ export default {
 
 .user-links {
   display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1rem;
   padding: 1rem;
 }
@@ -104,16 +100,46 @@ export default {
 }
 
 .links {
-  font-size: 1rem;
-  font-weight: 200;
-  color: blue;
+  font-weight: 800;
+  color: white;
   padding: 5px;
-  background-color: var(--background);
   text-align: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
   width: 100%;
+  height: 100%;
   margin: auto;
+  text-transform: uppercase;
+  transition: background 0.5s ease-out, color 1s ease-in;
+  display: grid;
+  place-items: center;
+}
+
+.links:hover {
+  background-color: var(--background);
+  color: var(--secondary);
+  cursor: pointer;
+}
+
+.home {
+  background-color: blueviolet;
+}
+
+.portfolio {
+  background-color: blueviolet;
+}
+
+.store {
+  background-color: blueviolet;
+  grid-column: span 2;
+}
+
+.account {
+  background-color: lightblue;
+}
+
+.cart {
+  background-color: orange;
 }
 
 .logo {
@@ -140,6 +166,8 @@ export default {
     grid-auto-columns: 1fr;
     gap: 1rem;
     padding: 1.5rem;
+    width: 100%;
+    height: 75%;
   }
 }
 

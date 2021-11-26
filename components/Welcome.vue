@@ -6,7 +6,19 @@
       </div>
     </article>
     <article class="welcome">
-      Olá, seja bem vindo.
+      <h1>Olá, seja bem vindo.</h1>
+      <p>Sou Denise Bueno, ilustradora e animadora.</p>
+      <p>Residente em São Paulo / SP</p>
+      <p>
+        Também sou tatuadora no
+        <a href="https://www.instagram.com/eclipseartestudio/" target="_blank" rel="noopener noreferrer">
+          Eclipse Arte Studio
+        </a>
+      </p>
+    </article>
+    <article class="credits">
+      Feito com ✰⋆💖✨ por
+      👨🏽‍💻 LL Developments 👨🏽‍💻
     </article>
   </section>
 </template>
@@ -16,13 +28,11 @@ export default {
   name: 'Welcome',
   mounted () {
     this.logoAnimation()
+    this.creditAnimation()
   },
   methods: {
-
     logoAnimation () {
-      // const gsap = this.$gsap
       const tl = this.$gsap.timeline({ ease: 'linear', duration: 2 })
-      // gsap.from('.logo', { rotation: 180, x: -500, duration: 1.5, ease: 'bounce' })
       tl
         .to('.welcome', { x: 5, scale: 1, color: 'black' })
         .from('.welcome', { x: 5 })
@@ -30,6 +40,14 @@ export default {
         .fromTo('.welcome', { delay: 5, filter: 'brightness(1.005)', scale: 1.05, duration: 3, ease: 'circ' },
           { x: 5, scale: 1.05, filter: 'none', color: 'black' }
         )
+    },
+    creditAnimation () {
+      const tl = this.$gsap.timeline()
+      tl
+        .from('.credits', { x: -3000, duration: 5 })
+        .to('.credits', { y: -10, duration: 1 })
+        .to('.credits', { y: 25, duration: 2.5, ease: 'bounce' })
+        .to('.credits', { y: 0, duration: 5, delay: 3 })
     }
   }
 }
@@ -43,10 +61,12 @@ section {
   height: 100%;
   width: 100%;
   place-items: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .logo img {
-  width: 30rem;
+  width: 25rem;
   height: auto;
   border-radius: 15px;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
@@ -59,6 +79,27 @@ section {
   display: grid;
   place-items: center;
   border-radius: 50px 5px 25px 5px;
+}
+
+.credits {
+  background: grey;
+  top: -16.5px;
+  right: 0;
+  border-bottom: 2px solid white;
+  border-left: 2px solid white;
+  border-radius: 0 0 0 15px;
+  padding: 5px;
+  font-size: 1rem;
+  position: absolute;
+  transition: top 0.5s ease;
+}
+
+.credits:hover {
+  top: 0;
+}
+
+.welcome {
+  padding: 15px;
 }
 
 @media screen and (min-width: 768px) {

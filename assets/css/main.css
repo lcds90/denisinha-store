@@ -19,13 +19,11 @@ body {
 /* NOTE Paleta de cores */
 
 :root {
-  --primary: #ffbcd9;
-  --secondary: #3eb489;
+  --primary: #edb9d8;
+  --secondary: #62a15d;
 
   /* NOTE Temas de cores */
 
   --background: #e7d5e1;
-  --header: #f4d772;
-  --aside: #fad6ca;
-  --footer: #222;
+  --black: #222;
 }
