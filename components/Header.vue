@@ -6,20 +6,35 @@
     </div>
     <nav class="sites-links">
       <div class="links home">
+        <font-awesome-icon
+          :icon="['fas', 'home']"
+        />
         home
       </div>
       <div class="links portfolio">
+        <font-awesome-icon
+          :icon="['fas', 'grin-stars']"
+        />
         portfolio
       </div>
       <div class="links store">
+        <font-awesome-icon
+          :icon="['fas', 'shopping-bag']"
+        />
         loja
       </div>
     </nav>
     <nav class="user-links">
       <div class="links account">
+        <font-awesome-icon
+          :icon="['fas', 'user']"
+        />
         Entrar
       </div> <!-- Quando logado, minha conta -->
       <div class="links cart">
+        <font-awesome-icon
+          :icon="['fas', 'shopping-cart']"
+        />
         Carrinho
       </div>
     </nav>
@@ -93,6 +108,8 @@ export default {
   grid-template-columns: 1fr;
   gap: 1rem;
   padding: 1rem;
+  border-left: 0.5px solid grey;
+  width: 100%;
 }
 
 .user {
