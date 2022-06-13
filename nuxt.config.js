@@ -58,9 +58,20 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   },
+  // https://google-analytics.nuxtjs.org/setup
+  googleAnalytics: {
+    id: process.env.GOOGLE_ANALYTICS_ID // Use as fallback if no runtime config is provided
+  },
+  publicRuntimeConfig: {
+    googleAnalytics: {
+      id: process.env.GOOGLE_ANALYTICS_ID
+    }
+  },
   // GSAP https://greensock.com/gsap/
   gsap: {
-    /* Module Options */
+    extraPlugins: {
+      text: true
+    }
   },
   fontawesome: {
     icons: {

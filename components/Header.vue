@@ -2,30 +2,25 @@
   <header class="header">
     <div class="line" />
     <div class="logo">
+      <span class="speak" />
       <img src="~/assets/img/logo.png" alt="">
     </div>
     <nav class="sites-links">
       <div class="links home">
         <NuxtLink to="/">
-          <font-awesome-icon
-            :icon="['fas', 'home']"
-          />
+          <font-awesome-icon :icon="['fas', 'home']" />
           Home
         </NuxtLink>
       </div>
       <div class="links portfolio">
         <NuxtLink to="/">
-          <font-awesome-icon
-            :icon="['fas', 'grin-stars']"
-          />
+          <font-awesome-icon :icon="['fas', 'grin-stars']" />
           portfolio
         </NuxtLink>
       </div>
       <div class="links store">
         <NuxtLink to="/store">
-          <font-awesome-icon
-            :icon="['fas', 'shopping-bag']"
-          />
+          <font-awesome-icon :icon="['fas', 'shopping-bag']" />
           Loja
         </NuxtLink>
       </div>
@@ -33,17 +28,14 @@
     <nav class="user-links">
       <div class="links account">
         <NuxtLink to="/">
-          <font-awesome-icon
-            :icon="['fas', 'user']"
-          />
+          <font-awesome-icon :icon="['fas', 'user']" />
           Entrar
         </NuxtLink>
-      </div> <!-- Quando logado, minha conta -->
+      </div>
+      <!-- Quando logado, minha conta -->
       <div class="links cart">
         <NuxtLink to="/">
-          <font-awesome-icon
-            :icon="['fas', 'shopping-cart']"
-          />
+          <font-awesome-icon :icon="['fas', 'shopping-cart']" />
           Carrinho
         </NuxtLink>
       </div>
@@ -57,27 +49,78 @@ export default {
     this.logoAnimation()
     this.iconsAnimation()
     this.borderAnimation()
+    setTimeout(() => this.denisinhaSpeechAnimation(), 200)
   },
   methods: {
     logoAnimation () {
-      // const gsap = this.$gsap
-      const tl = this.$gsap.timeline({ ease: 'linear', duration: 2, repeat: -1, clearProps: 'all' })
-      // gsap.from('.logo', { rotation: 180, x: -500, duration: 1.5, ease: 'bounce' })
-      tl
-        .to('.logo img', { x: 5, scale: 1 })
+      const tl = this.$gsap.timeline({
+        ease: 'linear',
+        duration: 2,
+        repeat: -1,
+        clearProps: 'all'
+      })
+      tl.to('.logo img', { x: 5, scale: 1 })
         .from('.logo img', { x: 5 })
         .to('.logo img', { x: 5, scale: 1.05, duration: 3, ease: 'bounce' })
-        .fromTo('.logo img', { delay: 5, filter: 'brightness(1.005)', x: 5, scale: 1.05, duration: 3, ease: 'circ' },
+        .fromTo(
+          '.logo img',
+          {
+            delay: 5,
+            filter: 'brightness(1.005)',
+            x: 5,
+            scale: 1.05,
+            duration: 3,
+            ease: 'circ'
+          },
           { x: 5, scale: 1.05, filter: 'none' }
         )
     },
     iconsAnimation () {
       const gsap = this.$gsap
-      gsap.from('.links', { x: -15, duration: 1, rotation: 0.15, filter: 'hue-rotate(25deg)', stagger: 0.1, clearProps: 'all' })
+      gsap.from('.links', {
+        x: -15,
+        duration: 2,
+        rotation: 0.15,
+        filter: 'hue-rotate(25deg)',
+        stagger: 0.25,
+        clearProps: 'all'
+      })
+      gsap.from('.header .logo img', {
+        delay: 1,
+        opacity: 0,
+        duration: 2
+      })
     },
     borderAnimation () {
       const gsap = this.$gsap.timeline({ clearProps: 'all' })
-      gsap.fromTo('.line', { opacity: 0, width: '0%', duration: 2 }, { opacity: 1, width: '100%', duration: 4, delay: 5 })
+      gsap.fromTo(
+        '.line',
+        { opacity: 0, width: '0%', duration: 2 },
+        { opacity: 1, width: '100%', duration: 4, delay: 5 }
+      )
+    },
+    denisinhaSpeechAnimation () {
+      const gsap = this.$gsap.timeline({
+        clearProps: 'all',
+        duration: 5,
+        ease: 'bounce'
+      })
+      const el = '.speak'
+      const textConfig = {
+        delay: 1,
+        duration: 2,
+        ease: 'none'
+      }
+      gsap
+        .to(el, { opacity: 1 })
+        .to(el, {
+          ...textConfig,
+          text: { speed: 0.75, value: 'Olá, sou a Denisinha' }
+        })
+        .to(el, {
+          ...textConfig,
+          text: { speed: 0.75, value: 'Irei te auxiliar em sua jornada pelo nosso site! :)' }
+        })
     }
   }
 }
@@ -175,11 +218,27 @@ export default {
 }
 
 .logo {
+  transform: translateX(9rem);
   grid-column: span 2;
 }
 
 .logo img {
   width: 10rem;
+}
+
+span.speak {
+  position: fixed;
+  top: 0.5rem;
+  left: -20rem;
+  width: 20rem;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  background: white;
+  border-radius: 2px;
+  padding: 0.5px 15px 15px 10px;
+  opacity: 0;
+  clip-path: polygon(0% 0%, 95% 0, 95% 67%, 100% 76%, 87% 76%, 0% 75%);
 }
 
 @media screen and (min-width: 768px) {
@@ -234,5 +293,4 @@ export default {
     width: 8rem;
   }
 }
-
 </style>
