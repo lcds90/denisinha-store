@@ -2,9 +2,7 @@
 <template>
   <div class="layout-store">
     <Header />
-    <aside
-      class="aside"
-    >
+    <aside class="aside">
       <!--  <p v-if="$fetchState.pending">
         Fetching mountains...
       </p>
@@ -23,24 +21,35 @@
         </button>
       </div> -->
     </aside>
-    <main
-      class="main"
-    >
+    <main class="main">
       <ul>
-        <li v-for="todo in todos" :key="todo.text">
-          <input :checked="todo.done" type="checkbox" @change="toggle(todo)">
+        <li
+          v-for="todo in todos"
+          :key="todo.text"
+        >
+          <input
+            :checked="todo.done"
+            type="checkbox"
+            @change="toggle(todo)"
+          >
           <span :class="{ done: todo.done }">{{ todo.text }}</span>
         </li>
-        <li><input placeholder="What needs to be done?" @keyup.enter="addTodo"></li>
+        <li>
+          <input
+            placeholder="What needs to be done?"
+            @keyup.enter="addTodo"
+          >
+        </li>
       </ul>
     </main>
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
 import { mapMutations } from 'vuex'
 
-export default {
+export default Vue.extend({
   data () {
     return {
       show: true,
@@ -80,5 +89,5 @@ export default {
       toggle: 'todos/toggle'
     })
   }
-}
+})
 </script>
